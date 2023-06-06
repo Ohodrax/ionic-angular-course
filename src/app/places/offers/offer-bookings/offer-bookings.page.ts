@@ -10,7 +10,7 @@ import { PlacesService } from '../../places.service';
   styleUrls: ['./offer-bookings.page.scss'],
 })
 export class OfferBookingsPage implements OnInit {
-  place: Place[];
+  place: Place;
   placeLoaded: any;
 
   constructor(
@@ -28,8 +28,7 @@ export class OfferBookingsPage implements OnInit {
 
       const id = `${paramMap.get('placeId')}`;
 
-      this.placeLoaded = this.placesService.getPlace(id);
-      this.place = this.placeLoaded;
+      this.place = this.placesService.getPlace(id);
     });
   }
 

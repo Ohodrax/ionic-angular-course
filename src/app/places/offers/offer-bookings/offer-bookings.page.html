@@ -3,12 +3,12 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/places/tabs/offers"></ion-back-button>
     </ion-buttons>
-    <ion-title>Offer Booking -</ion-title>
+    <ion-title>{{ place.title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-button class="ion-margin" color="primary" [routerLink]="['/', 'places', 'tabs', 'offers', 'edit-offer', 3]">
+  <ion-button class="ion-margin" color="primary" [routerLink]="['/', 'places', 'tabs', 'offers', 'edit-offer', place.id]">
     <ion-icon name="create-outline"></ion-icon>
   </ion-button>
 </ion-content>
