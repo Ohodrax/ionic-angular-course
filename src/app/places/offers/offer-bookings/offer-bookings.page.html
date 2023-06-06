@@ -1,13 +1,14 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>offer-bookings</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/places/tabs/offers"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Offer Booking -</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">offer-bookings</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-button class="ion-margin" color="primary" [routerLink]="['/', 'places', 'tabs', 'offers', 'edit-offer', 3]">
+    <ion-icon name="create-outline"></ion-icon>
+  </ion-button>
 </ion-content>

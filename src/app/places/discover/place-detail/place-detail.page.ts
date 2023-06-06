@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-place-detail',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaceDetailPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private navCrtl: NavController
+  ) { }
 
   ngOnInit() {
+  }
+
+  onBookPlace(){
+    this.navCrtl.navigateBack('/places/tabs/discover');
   }
 
 }
