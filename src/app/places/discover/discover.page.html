@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-segment value="all" (ionChange)="onFilterUpdate($event)">
+  <ion-segment value="all" (ionChange)="onFilterUpdate($event)" color="secondary">
     <ion-segment-button value="all">All Places</ion-segment-button>
     <ion-segment-button value="bookable">Bookable Places</ion-segment-button>
   </ion-segment>
@@ -26,7 +26,7 @@
             <ion-text>{{ loadedPlaces[0].description }}</ion-text>
           </ion-card-content>
           <div>
-            <ion-button fill="clear" color="primary" [routerLink]="['/', 'places', 'tabs', 'discover', loadedPlaces[0].id]">More</ion-button>
+            <ion-button fill="clear" color="secondary" [routerLink]="['/', 'places', 'tabs', 'discover', loadedPlaces[0].id]">More</ion-button>
           </div>
         </ion-card>
       </ion-col>
