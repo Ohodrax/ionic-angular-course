@@ -14,17 +14,17 @@
     <ion-grid>
       <ion-row>
         <ion-col size-sm="6" offset-sm="3">
-          <ion-input type="text" label="First Name" name="first-name" labelPlacement="floating" ngModel required></ion-input>
+          <ion-input type="text" label="First Name" name="first-name" labelPlacement="floating" ngModel required fill="outline"></ion-input>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col size-sm="6" offset-sm="3">
-          <ion-input type="text" label="Last Name" name="last-name" labelPlacement="floating" ngModel required></ion-input>
+          <ion-input type="text" label="Last Name" name="last-name" labelPlacement="floating" ngModel required fill="outline"></ion-input>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col size-sm="6" offset-sm="3">
-          <ion-select label="Number of Guests" name="guests-number" labelPlacement="floating" [ngModel]="'2'" required>
+          <ion-select label="Number of Guests" name="guests-number" labelPlacement="floating" [ngModel]="'2'" required fill="outline">
             <ion-select-option value="1">1</ion-select-option>
             <ion-select-option value="2">2</ion-select-option>
             <ion-select-option value="3">3</ion-select-option>
@@ -33,10 +33,10 @@
       </ion-row>
       <ion-row>
         <ion-col size-sm="3" offset-sm="3">
-          <ion-input type="date" label="From" labelPlacement="floating" name="date-from" [min]="" [max]="" ngModel #startDateCtrl="ngModel"></ion-input>
+          <ion-input type="date" label="From" labelPlacement="floating" name="date-from" [min]="" [max]="" ngModel #startDateCtrl="ngModel" fill="outline"></ion-input>
         </ion-col>
         <ion-col size-sm="3">
-          <ion-input type="date" label="To" labelPlacement="floating" name="date-to" [min]="startDateCtrl.value" [max]=""></ion-input>
+          <ion-input type="date" label="To" labelPlacement="floating" name="date-to" [min]="startDateCtrl.value" [max]="" fill="outline"></ion-input>
         </ion-col>
       </ion-row>
       <ion-row>
