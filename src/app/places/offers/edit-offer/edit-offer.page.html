@@ -1,16 +1,43 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Edit Offer</ion-title>
     <ion-buttons slot="start">
       <ion-back-button [defaultHref]="'/places/tabs/offers/' + place.id"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit Offer</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onUpdateOffer()" [disabled]="!form.valid">
+        <ion-icon name="checkmark" slot="icon-only"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">edit-offer</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true">
+  <form [formGroup]="form">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-input color="primary" type="text" label="Title" labelPlacement="floating" autocomplete autocorrect formControlName="title" inputmode="text" fill="outline"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-textarea rows="3" [counter]="true" maxlength="180" label="Short Description" labelPlacement="floating" formControlName="description" fill="outline" inputmode="text"></ion-textarea>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-input type="number" label="Price" labelPlacement="floating" formControlName="price" fill="outline" inputmode="decimal"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="3" offset-sm="3">
+          <ion-input type="date" label="Available from" labelPlacement="floating" min="2019-01-01" max="2025-12-31" formControlName="dateFrom" fill="outline"></ion-input>
+        </ion-col>
+        <ion-col size-sm="3">
+          <ion-input type="date" label="Available to" labelPlacement="floating" min="2019-01-02" max="2025-12-31" formControlName="dateTo" fill="outline" style="display: flex;align-items: center;"></ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>

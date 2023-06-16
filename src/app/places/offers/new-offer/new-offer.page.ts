@@ -19,9 +19,9 @@ export class NewOfferPage implements OnInit {
       }),
       description: new FormControl(null, {
         updateOn: 'blur',
-        validators: [Validators.required, Validators.maxLength(180)]
+        validators: [Validators.required]
       }),
-      price: new FormControl({
+      price: new FormControl(null, {
         updateOn: 'blur',
         validators: [Validators.required, Validators.min(1)]
       }),
@@ -37,7 +37,10 @@ export class NewOfferPage implements OnInit {
   }
 
   onCreateOffer(){
-
+    console.log(this.form)
+    if (!this.form.valid) {
+      return;
+    }
   }
 
 }
