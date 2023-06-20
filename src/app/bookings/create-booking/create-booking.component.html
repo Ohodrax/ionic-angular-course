@@ -33,10 +33,26 @@
       </ion-row>
       <ion-row>
         <ion-col size-sm="3" offset-sm="3">
-          <ion-input type="date" label="From" labelPlacement="floating" name="date-from" [min]="" [max]="" ngModel #startDateCtrl="ngModel" fill="outline"></ion-input>
+
+          <ion-datetime-button datetime="dateFrom" label="From" labelPlacement="floating" name="date-from" fill="outline"></ion-datetime-button>
+
+          <ion-modal [keepContentsMounted]="true">
+            <ng-template>
+              <ion-datetime id="dateFrom" presentation="date" [preferWheel]="true" [min]="selectedPlace.dateFrom?.toISOString()" [max]="selectedPlace.dateTo?.toISOString()" [value]="selectedPlace.dateFrom?.toISOString()" [(ngModel)]="dateFrom" #startDateCtrl="ngModel" name="dateFrom"></ion-datetime>
+            </ng-template>
+          </ion-modal>
+
         </ion-col>
         <ion-col size-sm="3">
-          <ion-input type="date" label="To" labelPlacement="floating" name="date-to" [min]="startDateCtrl.value" [max]="" fill="outline"></ion-input>
+
+          <ion-datetime-button datetime="dateTo" label="To" labelPlacement="floating" name="date-to" fill="outline"></ion-datetime-button>
+
+          <ion-modal [keepContentsMounted]="true">
+            <ng-template>
+              <ion-datetime id="dateTo" presentation="date" [preferWheel]="true" [min]="dateFrom" [value]="dateFrom" [max]="selectedPlace.dateTo?.toISOString()"></ion-datetime>
+            </ng-template>
+          </ion-modal>
+
         </ion-col>
       </ion-row>
       <ion-row>

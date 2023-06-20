@@ -9,6 +9,7 @@ import { ModalController } from '@ionic/angular';
 })
 export class CreateBookingComponent  implements OnInit {
   @Input() selectedPlace: Place
+  dateFrom: any
 
   constructor(
     private modalCtrl: ModalController
