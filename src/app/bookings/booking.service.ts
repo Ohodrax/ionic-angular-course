@@ -1,24 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Booking } from './booking.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookingService {
 
-  private _booking: Booking[] = [
-    {
-      id: "xyz",
-      placeId: "p1",
-      placeTitle: "Manhattan Mansion",
-      guestNumber: 2,
-      userId: "abc"
-    }
-  ]
+  private _bookings = new BehaviorSubject<Booking[]>([]);
 
   get bookings() {
-    return [...this._booking];
+    return this._bookings.asObservable();
   }
 
-  constructor() { }
+  addBooking(
+    placeId: string,
+    placeTitle: string,
+    placeImage: string,
+    firstName: string,
+    lastName: string,
+    guestNumber: number,
+    dateFrom: Date,
+    dateTo: Date
+  ) {
+
+  }
+
+  cancelBooking(bookingId: string){}
 }
