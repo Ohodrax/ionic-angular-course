@@ -12,9 +12,10 @@ export const environment = {
     messagingSenderId: "590760558034",
     appId            : "1:590760558034:web:cc9fa0c42ad7f70be95c0b",
     measurementId    : "G-ELXDBCP276"
-  }
+  },
+  googleMapsAPIKey: 'AIzaSyCzASRgDCbpiezi8VhXyRIQqLqUev7QjeQ'
 };
-
+// AIzaSyAI-yL2Dy9vq1f_smccYncEVlhFGuf6LZo (Project Generic) | AIzaSyCzASRgDCbpiezi8VhXyRIQqLqUev7QjeQ (Project Ionic) -> Maps
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

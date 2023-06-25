@@ -53,6 +53,18 @@
       "guestNumber": 2,
       "bookedFrom": "2023-06-20T02:28:00.000Z",
       "bookedTo": "2023-06-23T02:28:00.000Z"
+    },
+    {
+      "id": 2,
+      "placeId": "1",
+      "userId": "sda",
+      "placeTitle": "New York",
+      "placeImage": "https://lonelyplanetimages.imgix.net/mastheads/GettyImages-538096543_medium.jpg?sharp=10&vib=20&w=1200",
+      "firstName": "Rodrigo",
+      "lastName": "Cassiano",
+      "guestNumber": 2,
+      "bookedFrom": "2023-06-18T03:00:00.000Z",
+      "bookedTo": "2023-06-20T16:31:00.000Z"
     }
   ]
 }
