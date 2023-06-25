@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class BookingsPage implements OnInit, OnDestroy {
   loadedBookings: Booking[];
+  isLoading = false;
   private bookingSub: Subscription;
 
   constructor(
@@ -21,8 +22,14 @@ export class BookingsPage implements OnInit, OnDestroy {
   ngOnInit() {
     this.bookingSub = this.bookingService.bookings.subscribe(bookings => {
       this.loadedBookings = bookings;
-      console.log(this.loadedBookings)
     });
+  }
+
+  ionViewWillEnter() {
+    this.isLoading = true;
+    this.bookingService.fetchBookings().subscribe(() => {
+      this.isLoading = false;
+    })
   }
 
   ngOnDestroy(): void {
@@ -31,7 +38,7 @@ export class BookingsPage implements OnInit, OnDestroy {
     }
   }
 
-  onCancelBooking(bookingId: string, slidingEl: IonItemSliding){
+  onCancelBooking(bookingId: any, slidingEl: IonItemSliding){
     slidingEl.close();
     this.loadingCtrl.create({message: 'Cancelling...'}).then(loadingEl => {
       loadingEl.present();

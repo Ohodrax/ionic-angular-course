@@ -3,12 +3,15 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/places/tabs/discover"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ place.title }}</ion-title>
+    <ion-title>{{ !isLoading ? place.title : "Loading place" }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-no-padding">
-  <ion-grid class="ion-no-padding">
+  <div *ngIf="isLoading" class="ion-text-center">
+    <ion-spinner color="primary"></ion-spinner>
+  </div>
+  <ion-grid class="ion-no-padding" *ngIf="!isLoading">
     <ion-row class="ion-no-padding">
       <ion-col sizeSm="6" offsetSm="3" class="ion-no-padding">
         <ion-img [src]="place.imageUrl"></ion-img>
