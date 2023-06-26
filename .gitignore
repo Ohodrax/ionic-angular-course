@@ -18,7 +18,7 @@ eslintrc.json
 /_backend/node_modules
 
 # API Keys
-/src/environments
+# /src/environments
 
 /.sourcemaps
 /.versions
