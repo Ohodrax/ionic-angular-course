@@ -39,6 +39,22 @@
       "dateFrom": "2023-06-10T00:00:00.000Z",
       "dateTo": "2023-06-30T00:00:00.000Z",
       "userId": "abc"
+    },
+    {
+      "id": 5,
+      "title": "SP-Brazil",
+      "description": "São Paulo",
+      "imageUrl": "https://lonelyplanetimages.imgix.net/mastheads/GettyImages-538096543_medium.jpg?sharp=10&vib=20&w=1200",
+      "price": 300.99,
+      "dateFrom": "2023-06-10T00:00:00.000Z",
+      "dateTo": "2023-06-30T00:00:00.000Z",
+      "userId": "sda",
+      "location": {
+        "lat": -23.541641918892108,
+        "lng": -46.630096435546875,
+        "address": "R. da Cantareira, 283 - Centro Histórico de São Paulo, São Paulo - SP, 01024-100, Brasil",
+        "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-23.541641918892108,-46.630096435546875&zoom=14&size=500x300&maptype=roadmap&key=AIzaSyCzASRgDCbpiezi8VhXyRIQqLqUev7QjeQ&markers=color:red%7Clabel:P%7C-23.541641918892108,-46.630096435546875"
+      }
     }
   ],
   "bookings": [

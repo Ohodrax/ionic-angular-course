@@ -4,6 +4,7 @@ import { AuthService } from '../auth/auth.service';
 import { BehaviorSubject, of } from 'rxjs';
 import { delay, map, take, tap, switchMap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { PlaceLocation } from './location.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,8 @@ export class PlacesService {
             resData[key].price,
             new Date(`${resData[key].dateFrom}`),
             new Date(`${resData[key].dateTo}`),
-            resData[key].userId
+            resData[key].userId,
+            resData[key].location
           ))
         }
       }
@@ -52,7 +54,8 @@ export class PlacesService {
         placeData.price,
         new Date(`${placeData.dateFrom}`),
         new Date(`${placeData.dateTo}`),
-        placeData.userId
+        placeData.userId,
+        placeData.location
       )
     }))
   }
@@ -63,6 +66,7 @@ export class PlacesService {
     price: number,
     dateFrom: Date,
     dateTo: Date,
+    location: PlaceLocation
   ) {
     let generatedId: string;
     const newPlace = new Place(
@@ -73,7 +77,8 @@ export class PlacesService {
       price,
       dateFrom,
       dateTo,
-      this.authService.userId
+      this.authService.userId,
+      location
     );
     return this.http
       .post<{ id: string }>(
@@ -133,7 +138,8 @@ export class PlacesService {
           oldPlace.price,
           oldPlace.dateFrom,
           oldPlace.dateTo,
-          oldPlace.userId
+          oldPlace.userId,
+          oldPlace.location
         );
         return this.http.put(`http://localhost:3001/offered-places/${placeId}`, {...updatedPlaces[updatedplaceIndex], id: null });
       }),
