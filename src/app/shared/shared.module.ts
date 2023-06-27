@@ -8,7 +8,7 @@ import { ImagePickerComponent } from "./pickers/image-picker/image-picker.compon
 @NgModule({
   declarations: [LocationPickerComponent, MapModalComponent, ImagePickerComponent],
   imports: [CommonModule, IonicModule],
-  exports: [LocationPickerComponent, MapModalComponent],
+  exports: [LocationPickerComponent, MapModalComponent, ImagePickerComponent],
   // entryComponents: [MapModalComponent]
 })
 export class SharedModule {}

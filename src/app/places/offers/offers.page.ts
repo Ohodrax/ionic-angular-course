@@ -41,7 +41,7 @@ export class OffersPage implements OnInit, OnDestroy {
   }
 
   onEdit(offerId: any, slidingItem: IonItemSliding) {
-    console.log("Editing item", offerId);
+    // console.log("Editing item", offerId);
     slidingItem.close();
     this.router.navigate(['/', 'places', 'tabs', 'offers', 'edit-offer', offerId]);
   }
