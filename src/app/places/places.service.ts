@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Place } from './place.model';
 import { AuthService } from '../auth/auth.service';
-import { BehaviorSubject, of } from 'rxjs';
-import { delay, map, take, tap, switchMap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, Observer, of } from 'rxjs';
+import { delay, map, take, tap, switchMap, finalize } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { PlaceLocation } from './location.model';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,14 @@ import { PlaceLocation } from './location.model';
 export class PlacesService {
   private _places = new BehaviorSubject<Place[]>([]);
 
+  downloadURL: Observable<string>;
+  fb: any;
+
   get places(){
     return this._places.asObservable();
   }
 
-  constructor(private authService: AuthService, private http: HttpClient) { }
+  constructor(private authService: AuthService, private http: HttpClient, private storage: AngularFireStorage) { }
 
   fetchPlaces() {
     return this.http.get<{ [key: string]: Place }>('http://localhost:3001/offered-places').pipe(tap(resData => {})).pipe(map(resData => {
@@ -60,25 +64,54 @@ export class PlacesService {
     }))
   }
 
+  uploadImage(image: File): Observable<{ imageUrl: string }> {
+    return new Observable((observer: Observer<{ imageUrl: string }>) => {
+      var n = Date.now();
+      const filePath = `${n}`;
+      const fileRef = this.storage.ref(filePath);
+
+      const task = this.storage.upload(`${n}`, image);
+      task.snapshotChanges().pipe(
+        finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL();
+          this.downloadURL.subscribe(url => {
+            if (url) {
+              this.fb = url;
+              observer.next({ imageUrl: this.fb }); // Emit the URL
+              observer.complete(); // Complete the Observable
+            }
+          });
+        })
+      ).subscribe();
+
+      // Cleanup logic (if needed)
+      return () => {
+        // Unsubscribe from any ongoing operations
+        // and perform necessary cleanup tasks
+      };
+    });
+  }
+
   addPlace(
     title: string,
     description: string,
     price: number,
     dateFrom: Date,
     dateTo: Date,
-    location: PlaceLocation
+    location: PlaceLocation,
+    imageUrl: string
   ) {
     let generatedId: string;
     const newPlace = new Place(
       Math.random().toString(),
       title,
       description,
-      'https://lonelyplanetimages.imgix.net/mastheads/GettyImages-538096543_medium.jpg?sharp=10&vib=20&w=1200',
+      imageUrl,
       price,
       dateFrom,
       dateTo,
       this.authService.userId,
-      location
+      location,
     );
     return this.http
       .post<{ id: string }>(
