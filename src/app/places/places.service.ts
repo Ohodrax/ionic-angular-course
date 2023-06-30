@@ -102,27 +102,34 @@ export class PlacesService {
     imageUrl: string
   ) {
     let generatedId: string;
-    const newPlace = new Place(
-      Math.random().toString(),
-      title,
-      description,
-      imageUrl,
-      price,
-      dateFrom,
-      dateTo,
-      this.authService.userId,
-      location,
-    );
-    return this.http
+    let newPlace: Place;
+
+    return this.authService.userId.pipe(take(1), switchMap(userId => {
+      if(!userId){
+        throw new Error('No user ID found.');
+      }
+
+      newPlace = new Place(
+        Math.random().toString(),
+        title,
+        description,
+        imageUrl,
+        price,
+        dateFrom,
+        dateTo,
+        userId,
+        location,
+      );
+
+      return this.http
       .post<{ id: string }>(
         'http://localhost:3001/offered-places',
         {
           ...newPlace,
           id: null
         }
-      )
-      .pipe(
-        switchMap(resData => {
+      );
+    }), switchMap(resData => {
           generatedId = resData.id;
           return this.places;
         }),
@@ -132,19 +139,6 @@ export class PlacesService {
           this._places.next(places.concat(newPlace));
         })
       );
-    // const newPlace = new Place(
-    //   Math.random().toString(),
-    //   title,
-    //   descrition,
-    //   'https://imgs.6sqft.com/wp-content/uploads/2014/06/21042534/Felix_Warburg_Mansion_007.jpg',
-    //   price,
-    //   dateFrom,
-    //   dateTo,
-    //   this.authService.userId
-    // );
-    // return this.places.pipe(take(1), delay(1000), tap(places => {
-    //     this._places.next(places.concat(newPlace));
-    // }));
   }
 
   updatePlace(placeId: string, title: string, descrition: string) {

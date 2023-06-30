@@ -4,7 +4,7 @@ import { ActionSheetController, AlertController, LoadingController, ModalControl
 import { PlacesService } from '../../places.service';
 import { Place } from '../../place.model';
 import { CreateBookingComponent } from '../../../bookings/create-booking/create-booking.component';
-import { Subscription } from 'rxjs';
+import { Subscription, switchMap } from 'rxjs';
 import { BookingService } from  '../../../bookings/booking.service'
 import { AuthService } from '../../..//auth/auth.service';
 import { PlaceLocation } from '../../location.model';
@@ -42,9 +42,19 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
       }
       const id = `${paramMap.get('placeId')}`;
       this.isLoading = true;
-      this.placeSub = this.placesService.getPlace(id).subscribe(place => {
+      let fetcheduserId: string;
+
+      this.authService.userId.pipe(switchMap(userId => {
+        if (!userId) {
+          throw new Error('Could not find userId.');
+        }
+
+        fetcheduserId = userId;
+
+        return this.placesService.getPlace(id);
+      })).subscribe(place => {
         this.place = place;
-        this.isBookable = place.userId !== this.authService.userId;
+        this.isBookable = place.userId !== fetcheduserId;
         this.isLoading = false;
       }, error => {
         this.alertCtrl.create(

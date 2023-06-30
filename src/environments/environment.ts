@@ -13,7 +13,8 @@ export const environment = {
     appId            : "1:590760558034:web:cc9fa0c42ad7f70be95c0b",
     measurementId    : "G-ELXDBCP276"
   },
-  googleMapsAPIKey: 'AIzaSyCzASRgDCbpiezi8VhXyRIQqLqUev7QjeQ'
+  googleMapsAPIKey: 'AIzaSyCzASRgDCbpiezi8VhXyRIQqLqUev7QjeQ',
+  firebaseApiKey: "AIzaSyCzASRgDCbpiezi8VhXyRIQqLqUev7QjeQ"
 };
 // AIzaSyAI-yL2Dy9vq1f_smccYncEVlhFGuf6LZo (Project Generic) | AIzaSyCzASRgDCbpiezi8VhXyRIQqLqUev7QjeQ (Project Ionic) -> Maps
 /*

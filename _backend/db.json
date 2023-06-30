@@ -8,7 +8,13 @@
       "price": 150,
       "dateFrom": "2023-06-15T00:00:00.000Z",
       "dateTo": "2023-06-23T00:00:00.000Z",
-      "userId": "abc"
+      "userId": "abc",
+      "location": {
+        "lat": -22.951915943270865,
+        "lng": -43.210487477481365,
+        "address": "Cristo Redentor - Santa Teresa, Rio de Janeiro - RJ, 22261, Brasil",
+        "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-22.951915943270865,-43.210487477481365&zoom=14&size=500x300&maptype=roadmap&key=AIzaSyCzASRgDCbpiezi8VhXyRIQqLqUev7QjeQ&markers=color:red%7Clabel:P%7C-22.951915943270865,-43.210487477481365"
+      }
     },
     {
       "id": 2,
@@ -18,93 +24,13 @@
       "price": 150,
       "dateFrom": "2023-06-15T00:00:00.000Z",
       "dateTo": "2023-06-23T00:00:00.000Z",
-      "userId": "abc"
-    },
-    {
-      "id": 3,
-      "title": "Test",
-      "description": "Test",
-      "imageUrl": "https://lonelyplanetimages.imgix.net/mastheads/GettyImages-538096543_medium.jpg?sharp=10&vib=20&w=1200",
-      "price": 123.55,
-      "dateFrom": "2023-06-16T00:00:00.000Z",
-      "dateTo": "2023-06-24T00:00:00.000Z",
-      "userId": "abc"
-    },
-    {
-      "id": 4,
-      "title": "Test",
-      "description": "Test",
-      "imageUrl": "https://lonelyplanetimages.imgix.net/mastheads/GettyImages-538096543_medium.jpg?sharp=10&vib=20&w=1200",
-      "price": 123,
-      "dateFrom": "2023-06-10T00:00:00.000Z",
-      "dateTo": "2023-06-30T00:00:00.000Z",
-      "userId": "abc"
-    },
-    {
-      "id": 5,
-      "title": "SP-Brazil",
-      "description": "São Paulo",
-      "imageUrl": "https://lonelyplanetimages.imgix.net/mastheads/GettyImages-538096543_medium.jpg?sharp=10&vib=20&w=1200",
-      "price": 300.99,
-      "dateFrom": "2023-06-10T00:00:00.000Z",
-      "dateTo": "2023-06-30T00:00:00.000Z",
-      "userId": "sda",
+      "userId": "abc",
       "location": {
-        "lat": -23.541641918892108,
-        "lng": -46.630096435546875,
-        "address": "R. da Cantareira, 283 - Centro Histórico de São Paulo, São Paulo - SP, 01024-100, Brasil",
-        "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-23.541641918892108,-46.630096435546875&zoom=14&size=500x300&maptype=roadmap&key=AIzaSyCzASRgDCbpiezi8VhXyRIQqLqUev7QjeQ&markers=color:red%7Clabel:P%7C-23.541641918892108,-46.630096435546875"
+        "lat": -22.951915943270865,
+        "lng": -43.210487477481365,
+        "address": "Cristo Redentor - Santa Teresa, Rio de Janeiro - RJ, 22261, Brasil",
+        "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-22.951915943270865,-43.210487477481365&zoom=14&size=500x300&maptype=roadmap&key=AIzaSyCzASRgDCbpiezi8VhXyRIQqLqUev7QjeQ&markers=color:red%7Clabel:P%7C-22.951915943270865,-43.210487477481365"
       }
-    },
-    {
-      "id": 16,
-      "title": "sadasdasdasd",
-      "description": "dsadasdasd asdasdas asddasd",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ionic-angular-course-72d6e.appspot.com/o/1688081782382?alt=media&token=e1742df3-53e4-42d0-936c-276b1902c653",
-      "price": 123,
-      "dateFrom": "2023-06-02T00:00:00.000Z",
-      "dateTo": "2023-06-30T00:00:00.000Z",
-      "userId": "sda"
-    },
-    {
-      "id": 17,
-      "title": "Rio de Janeiro",
-      "description": "Rio de Janeiro é a segunda principal cidade brasileira. A capital do estado do Rio de Janeiro está localizada no litoral da região Sudeste do Brasil.",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ionic-angular-course-72d6e.appspot.com/o/1688081940361?alt=media&token=88dbb512-90cf-4167-a0f9-ab4cfa393865",
-      "price": 1231.98,
-      "dateFrom": "2023-06-01T00:00:00.000Z",
-      "dateTo": "2023-06-30T00:00:00.000Z",
-      "userId": "sda"
-    },
-    {
-      "id": 18,
-      "title": "Teste",
-      "description": "easdasdsdas",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ionic-angular-course-72d6e.appspot.com/o/1688082298289?alt=media&token=2f23a4e0-8280-4786-940c-eb7ed6c5ce97",
-      "price": 123,
-      "dateFrom": "2023-06-01T00:00:00.000Z",
-      "dateTo": "2023-06-30T00:00:00.000Z",
-      "userId": "sda"
-    },
-    {
-      "id": 19,
-      "title": "sdaadsasdsad",
-      "description": "sdaasdasdasd",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ionic-angular-course-72d6e.appspot.com/o/1688082536904?alt=media&token=e53668f3-f9c8-41fa-ac47-1858fa2c8d7f",
-      "price": 123,
-      "dateFrom": "2023-05-01T00:00:00.000Z",
-      "dateTo": "2023-07-31T00:00:00.000Z",
-      "userId": "sda"
-    },
-    {
-      "id": 20,
-      "title": "saddasdas",
-      "description": "dsadasadsads",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ionic-angular-course-72d6e.appspot.com/o/1688082666546?alt=media&token=4a913eda-c903-4aaa-9098-7fa1e27f7656",
-      "price": 231,
-      "dateFrom": "2023-06-22T00:00:00.000Z",
-      "dateTo": "2023-06-28T00:00:00.000Z",
-      "userId": "sda"
     },
     {
       "id": 21,
@@ -120,6 +46,38 @@
         "lng": -43.210487477481365,
         "address": "Cristo Redentor - Santa Teresa, Rio de Janeiro - RJ, 22261, Brasil",
         "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-22.951915943270865,-43.210487477481365&zoom=14&size=500x300&maptype=roadmap&key=AIzaSyCzASRgDCbpiezi8VhXyRIQqLqUev7QjeQ&markers=color:red%7Clabel:P%7C-22.951915943270865,-43.210487477481365"
+      }
+    },
+    {
+      "id": 22,
+      "title": "asdasdasdasd",
+      "description": "saddasasddas",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ionic-angular-course-72d6e.appspot.com/o/1688092725559?alt=media&token=9c29d6a0-be47-4497-9dcf-0b2aab4d7642",
+      "price": 213,
+      "dateFrom": "2023-06-02T00:00:00.000Z",
+      "dateTo": "2023-06-30T00:00:00.000Z",
+      "userId": "pNHT62HSUzQxQVweF5W7w6NHK903",
+      "location": {
+        "lat": -23.6487764,
+        "lng": -46.500234,
+        "address": "Av. Sorocaba, 24 - Parque João Ramalho, Santo André - SP, 09290-260, Brasil",
+        "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-23.6487764,-46.500234&zoom=14&size=500x300&maptype=roadmap&key=AIzaSyCzASRgDCbpiezi8VhXyRIQqLqUev7QjeQ&markers=color:red%7Clabel:P%7C-23.6487764,-46.500234"
+      }
+    },
+    {
+      "id": 23,
+      "title": "sdasdasdasd",
+      "description": "asdasd saadsads",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ionic-angular-course-72d6e.appspot.com/o/1688093256672?alt=media&token=affd330f-3414-4834-9ae8-23de169c0c4b",
+      "price": 123.55,
+      "dateFrom": "2023-06-01T00:00:00.000Z",
+      "dateTo": "2023-06-30T00:00:00.000Z",
+      "userId": "pNHT62HSUzQxQVweF5W7w6NHK903",
+      "location": {
+        "lat": -23.6488008,
+        "lng": -46.5002602,
+        "address": "Av. Sorocaba, 24 - Parque João Ramalho, Santo André - SP, 09290-260, Brasil",
+        "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-23.6488008,-46.5002602&zoom=14&size=500x300&maptype=roadmap&key=AIzaSyCzASRgDCbpiezi8VhXyRIQqLqUev7QjeQ&markers=color:red%7Clabel:P%7C-23.6488008,-46.5002602"
       }
     }
   ],
@@ -147,6 +105,18 @@
       "guestNumber": 2,
       "bookedFrom": "2023-06-18T03:00:00.000Z",
       "bookedTo": "2023-06-20T16:31:00.000Z"
+    },
+    {
+      "id": 3,
+      "placeId": "21",
+      "userId": "pNHT62HSUzQxQVweF5W7w6NHK903",
+      "placeTitle": "Rio de Janeiro - Brazil",
+      "placeImage": "https://firebasestorage.googleapis.com/v0/b/ionic-angular-course-72d6e.appspot.com/o/1688082795273?alt=media&token=c1911c9b-f81c-4da7-ad30-c18faaef945d",
+      "firstName": "Rodrigo",
+      "lastName": "Cassiano",
+      "guestNumber": 2,
+      "bookedFrom": "2023-06-21T02:47:00.000Z",
+      "bookedTo": "2023-06-30T03:00:00.000Z"
     }
   ]
 }

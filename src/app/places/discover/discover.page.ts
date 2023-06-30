@@ -3,7 +3,7 @@ import { PlacesService } from '../places.service';
 import { Place } from '../place.model';
 import { ActivatedRoute } from '@angular/router';
 import { MenuController, NavController, SegmentChangeEventDetail } from '@ionic/angular';
-import { Subscription } from 'rxjs';
+import { Subscription, take } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -50,15 +50,15 @@ export class DiscoverPage implements OnInit, OnDestroy {
   }
 
   onFilterUpdate(event: Event){
-    const customEvent = event as CustomEvent<SegmentChangeEventDetail>;
-    if (customEvent.detail.value === 'all') {
-      this.relevantPlaces = this.loadedPlaces;
-      this.listedLoadedPlaces = this.relevantPlaces.slice(1);
-    } else {
-      this.relevantPlaces = this.loadedPlaces.filter(place => place.userId !== this.authService.userId );
-      this.listedLoadedPlaces = this.relevantPlaces.slice(1);
-    }
-    console.log("Changed")
-    console.log(customEvent.detail)
+    this.authService.userId.pipe(take(1)).subscribe(userId => {
+      const customEvent = event as CustomEvent<SegmentChangeEventDetail>;
+      if (customEvent.detail.value === 'all') {
+        this.relevantPlaces = this.loadedPlaces;
+        this.listedLoadedPlaces = this.relevantPlaces.slice(1);
+      } else {
+        this.relevantPlaces = this.loadedPlaces.filter(place => place.userId !== userId );
+        this.listedLoadedPlaces = this.relevantPlaces.slice(1);
+      }
+    })
   }
 }

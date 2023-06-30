@@ -29,19 +29,24 @@ export class BookingService {
     dateTo: Date
   ) {
     let generatedId: string;
-    const newBooking = new Booking(
-      Math.random().toString(),
-      placeId,
-      this.authService.userId,
-      placeTitle,
-      placeImage,
-      firstName,
-      lastName,
-      guestNumber,
-      dateFrom,
-      dateTo
-    );
-    return this.http.post<{ id: string }>('http://localhost:3001/bookings', {...newBooking, id: null}).pipe(switchMap(resData => {
+    let newBooking: Booking;
+
+    return this.authService.userId.pipe(take(1), switchMap(userId => {
+      newBooking = new Booking(
+        Math.random().toString(),
+        placeId,
+        `${userId}`,
+        placeTitle,
+        placeImage,
+        firstName,
+        lastName,
+        guestNumber,
+        dateFrom,
+        dateTo
+      );
+
+      return this.http.post<{ id: string }>('http://localhost:3001/bookings', {...newBooking, id: null});
+    }), switchMap(resData => {
       generatedId = resData.id;
       return this.bookings;
     }),
@@ -64,7 +69,13 @@ export class BookingService {
   }
 
   fetchBookings() {
-    return this.http.get<{ [key: string]: Booking }>(`http://localhost:3001/bookings?userId=${this.authService.userId}`).pipe(map(bookingData => {
+    return this.authService.userId.pipe(take(1), switchMap(userId => {
+      if (!userId) {
+        throw new Error('Could not find userId.');
+      }
+
+      return this.http.get<{ [key: string]: Booking }>(`http://localhost:3001/bookings?userId=${userId}`)
+    }), map(bookingData => {
         const bookings = [];
         for (const key in bookingData) {
           if (bookingData.hasOwnProperty(key)) {
