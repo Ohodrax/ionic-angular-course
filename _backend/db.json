@@ -79,6 +79,22 @@
         "address": "Av. Sorocaba, 24 - Parque João Ramalho, Santo André - SP, 09290-260, Brasil",
         "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-23.6488008,-46.5002602&zoom=14&size=500x300&maptype=roadmap&key=AIzaSyCzASRgDCbpiezi8VhXyRIQqLqUev7QjeQ&markers=color:red%7Clabel:P%7C-23.6488008,-46.5002602"
       }
+    },
+    {
+      "id": 24,
+      "title": "Test",
+      "description": "Test",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ionic-angular-course-72d6e.appspot.com/o/1688255457516?alt=media&token=b0dcaff4-dec6-4a0c-8a47-8e1c2e71b377",
+      "price": 123,
+      "dateFrom": "2023-07-07T00:00:00.000Z",
+      "dateTo": "2023-08-05T00:00:00.000Z",
+      "userId": "pNHT62HSUzQxQVweF5W7w6NHK903",
+      "location": {
+        "lat": -23.6487821,
+        "lng": -46.500233,
+        "address": "Av. Sorocaba, 24 - Parque João Ramalho, Santo André - SP, 09290-260, Brasil",
+        "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-23.6487821,-46.500233&zoom=14&size=500x300&maptype=roadmap&key=AIzaSyCzASRgDCbpiezi8VhXyRIQqLqUev7QjeQ&markers=color:red%7Clabel:P%7C-23.6487821,-46.500233"
+      }
     }
   ],
   "bookings": [
@@ -115,8 +131,8 @@
       "firstName": "Rodrigo",
       "lastName": "Cassiano",
       "guestNumber": 2,
-      "bookedFrom": "2023-06-21T02:47:00.000Z",
-      "bookedTo": "2023-06-30T03:00:00.000Z"
+      "bookedFrom": "2023-06-27T03:00:00.000Z",
+      "bookedTo": "2023-06-28T03:00:00.000Z"
     }
   ]
 }

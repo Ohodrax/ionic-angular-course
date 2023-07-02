@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.udemy-course.ionic-angular;
 
 import com.getcapacitor.BridgeActivity;
 

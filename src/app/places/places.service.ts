@@ -6,6 +6,7 @@ import { delay, map, take, tap, switchMap, finalize } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { PlaceLocation } from './location.model';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,9 @@ export class PlacesService {
   constructor(private authService: AuthService, private http: HttpClient, private storage: AngularFireStorage) { }
 
   fetchPlaces() {
-    return this.http.get<{ [key: string]: Place }>('http://localhost:3001/offered-places').pipe(tap(resData => {})).pipe(map(resData => {
+    return this.authService.token.pipe(take(1), switchMap(token => {
+      return this.http.get<{ [key: string]: Place }>(`${environment.requestUrl}/offered-places`, {headers: {Authorization: `Bearer ${token}`}});
+    }),tap(resData => {})).pipe(map(resData => {
       const places = [];
       for (const key in resData) {
         if (resData.hasOwnProperty(key)) {
@@ -49,7 +52,10 @@ export class PlacesService {
   }
 
   getPlace(id: string){
-    return this.http.get<Place>(`http://localhost:3001/offered-places/${id}`).pipe(map(placeData => {
+    return this.authService.token.pipe(take(1), switchMap(token => {
+      return this.http.get<Place>(`${environment.requestUrl}/offered-places/${id}`, {headers: {Authorization: `Bearer ${token}`}})
+    }),
+    map(placeData => {
       return new Place(
         id,
         placeData.title,
@@ -106,7 +112,7 @@ export class PlacesService {
 
     return this.authService.userId.pipe(take(1), switchMap(userId => {
       if(!userId){
-        throw new Error('No user ID found.');
+        throw new Error(`No user ID found.`);
       }
 
       newPlace = new Place(
@@ -121,14 +127,19 @@ export class PlacesService {
         location,
       );
 
-      return this.http
-      .post<{ id: string }>(
-        'http://localhost:3001/offered-places',
-        {
-          ...newPlace,
-          id: null
-        }
-      );
+      return this.authService.token.pipe(take(1), switchMap(token => {
+        return this.http
+        .post<{ id: string }>(
+          `${environment.requestUrl}/offered-places`,
+          {
+            ...newPlace,
+            id: null
+          }, {
+            headers: {Authorization: `Bearer ${token}`}
+          }
+        );
+
+      }));
     }), switchMap(resData => {
           generatedId = resData.id;
           return this.places;
@@ -168,7 +179,9 @@ export class PlacesService {
           oldPlace.userId,
           oldPlace.location
         );
-        return this.http.put(`http://localhost:3001/offered-places/${placeId}`, {...updatedPlaces[updatedplaceIndex], id: null });
+        return this.authService.token.pipe(take(1), switchMap(token => {
+          return this.http.put(`${environment.requestUrl}/offered-places/${placeId}`, {...updatedPlaces[updatedplaceIndex], id: null }, {headers: {Authorization: `Bearer ${token}`}});
+        }));
       }),
       tap(() => {
         this._places.next(updatedPlaces);

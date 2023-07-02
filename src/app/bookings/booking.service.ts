@@ -4,6 +4,7 @@ import { BehaviorSubject, concat } from 'rxjs';
 import { delay, map, switchMap, take, tap } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -45,7 +46,9 @@ export class BookingService {
         dateTo
       );
 
-      return this.http.post<{ id: string }>('http://localhost:3001/bookings', {...newBooking, id: null});
+      return this.authService.token.pipe(take(1), switchMap(token => {
+        return this.http.post<{ id: string }>(`${environment.requestUrl}/bookings`, {...newBooking, id: null}, {headers: {Authorization: `Bearer ${token}`}});
+      }));
     }), switchMap(resData => {
       generatedId = resData.id;
       return this.bookings;
@@ -58,14 +61,16 @@ export class BookingService {
   }
 
   cancelBooking(bookingId: string) {
-    return this.http.delete(`http://localhost:3001/bookings/${bookingId}`).pipe(switchMap(() => {
-        return this.bookings;
-      }),
-      take(1),
-      tap(bookings => {
-        this._bookings.next(bookings.filter(b => b.id !== bookingId));
-      })
-    )
+    return this.authService.token.pipe(take(1), switchMap(token => {
+      return this.http.delete(`${environment.requestUrl}/bookings/${bookingId}`, {headers: {Authorization: `Bearer ${token}`}}).pipe(switchMap(() => {
+          return this.bookings;
+        }),
+        take(1),
+        tap(bookings => {
+          this._bookings.next(bookings.filter(b => b.id !== bookingId));
+        })
+      )
+    }));
   }
 
   fetchBookings() {
@@ -74,7 +79,9 @@ export class BookingService {
         throw new Error('Could not find userId.');
       }
 
-      return this.http.get<{ [key: string]: Booking }>(`http://localhost:3001/bookings?userId=${userId}`)
+      return this.authService.token.pipe(take(1), switchMap(token => {
+        return this.http.get<{ [key: string]: Booking }>(`${environment.requestUrl}/bookings?userId=${userId}`, {headers: {Authorization: `Bearer ${token}`}})
+      }));
     }), map(bookingData => {
         const bookings = [];
         for (const key in bookingData) {

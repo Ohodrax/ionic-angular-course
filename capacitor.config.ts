@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  // appId: 'io.ionic.starter',
-  addId: 'com.udemy-course.ionic-angular',
+  appId: 'com.udemy-course.ionic-angular',
+  // addId: 'com.udemy-course.ionic-angular',
   appName: 'ionic-angular-course',
   webDir: 'www',
   server: {

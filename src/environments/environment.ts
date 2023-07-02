@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production:     false,
+  production      : false,
+  googleMapsAPIKey: 'AIzaSyCzASRgDCbpiezi8VhXyRIQqLqUev7QjeQ',
+  firebaseApiKey  : "AIzaSyCzASRgDCbpiezi8VhXyRIQqLqUev7QjeQ",
+  requestUrl      : "http://localhost:3001",
   firebaseConfig: {
     apiKey           : "AIzaSyCzASRgDCbpiezi8VhXyRIQqLqUev7QjeQ",
     authDomain       : "ionic-angular-course-72d6e.firebaseapp.com",
@@ -12,9 +15,7 @@ export const environment = {
     messagingSenderId: "590760558034",
     appId            : "1:590760558034:web:cc9fa0c42ad7f70be95c0b",
     measurementId    : "G-ELXDBCP276"
-  },
-  googleMapsAPIKey: 'AIzaSyCzASRgDCbpiezi8VhXyRIQqLqUev7QjeQ',
-  firebaseApiKey: "AIzaSyCzASRgDCbpiezi8VhXyRIQqLqUev7QjeQ"
+  }
 };
 // AIzaSyAI-yL2Dy9vq1f_smccYncEVlhFGuf6LZo (Project Generic) | AIzaSyCzASRgDCbpiezi8VhXyRIQqLqUev7QjeQ (Project Ionic) -> Maps
 /*
